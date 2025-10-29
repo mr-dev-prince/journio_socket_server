@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import Conversation from "../model/conversation.model";
-import Message from "../model/message.model";
+import Conversation from "../model/conversation.model.js";
+import Message from "../model/message.model.js";
 
 export async function getOrCreateConversation(
   userId1: string,
