@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { Request, Response, NextFunction } from "express";
-import { JwtPayload } from "jsonwebtoken";
+import { type Request, type Response, type NextFunction } from "express";
+import { type JwtPayload } from "jsonwebtoken";
 
 interface AuthenticatedRequest extends Request {
   user?: string | JwtPayload;
