@@ -1,15 +1,15 @@
 import express from "express";
-import "dotenv/config";
-import cors from "cors";
-import connectDB from "./db/dbConnection";
-import { Server, Socket } from "socket.io";
-import { createServer } from "http";
-import { addMessage, getOrCreateConversation } from "./lib/conversation";
-import jwt from "jsonwebtoken";
-import Conversation from "./model/conversation.model";
-import Message from "./model/message.model";
-import * as cookie from "cookie";
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import * as cookie from "cookie";
+import cors from "cors";
+import "dotenv/config";
+import { createServer } from "http";
+import { Server, Socket } from "socket.io";
+import { addMessage, getOrCreateConversation } from "./lib/conversation.js";
+import Conversation from "./model/conversation.model.js";
+import Message from "./model/message.model.js";
+import connectDB from "./db/dbConnection.js";
 
 interface AuthenticatedSocket extends Socket {
   userId?: string;
@@ -179,7 +179,7 @@ io.on("connection", (socket: AuthenticatedSocket) => {
         const validIds = messageIds.filter((id) =>
           mongoose.isValidObjectId(id)
         );
-        
+
         if (validIds.length > 0) {
           await Message.updateMany(
             { _id: { $in: messageIds }, conversationId },
