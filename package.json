@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --project tsconfig.json ./server.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "dependencies": {
