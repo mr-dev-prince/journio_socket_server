@@ -160,7 +160,6 @@ io.on("connection", (socket: AuthenticatedSocket) => {
     async (payload: { conversationId: string; messageIds: string[] }) => {
       try {
         const { conversationId, messageIds } = payload;
-        console.log("conversationId--->", conversationId);
         if (
           !conversationId ||
           !Array.isArray(messageIds) ||
@@ -170,8 +169,6 @@ io.on("connection", (socket: AuthenticatedSocket) => {
 
         // Validate membership
         const conv = await Conversation.findById(conversationId);
-
-        console.log("message ids--->", messageIds);
 
         if (!conv || !conv.participants.map(String).includes(String(userId)))
           return;
